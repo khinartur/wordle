@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getWords } from "./data.js";
 import "./App.css";
+import { getSolutionChars } from "./utils.js";
+import { Keyboard } from "./Keyboard";
 
 // const API_URL = "https://some-api.com/api/wordle-words";
 const WORDS_COUNT = 6;
@@ -39,10 +41,6 @@ export default function App() {
       }
 
       const currIndex = getIndexOfCurrentTry();
-      if (currIndex === -1) {
-        setIsGameOver(true);
-        return;
-      }
       const currentTry = tries[currIndex];
       if (evt.key === "Enter") {
         if (currentTry.length < WORD_LENGTH) {
@@ -53,7 +51,10 @@ export default function App() {
           newState[currIndex] = currentTry + "+";
           return newState;
         });
-        if (currentTry.toLowerCase() === solution) {
+        if (
+          currentTry.toLowerCase() === solution ||
+          currIndex === WORDS_COUNT - 1
+        ) {
           setIsGameOver(true);
         }
         return;
@@ -87,14 +88,20 @@ export default function App() {
   }, [onKeyDown]);
 
   return (
-    <div className="App">
+    <div className="app">
       <div>
         <h1>Wordle Game</h1>
       </div>
+      {isGameOver && (
+        <div className="solution">Solution is: {solution.toUpperCase()}</div>
+      )}
       <div className="board">
         {tries.map((t, idx) => (
           <Line key={idx} line={t} solution={solution} />
         ))}
+      </div>
+      <div className="keyboard">
+        <Keyboard chars={getSolutionChars(solution, tries)} />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
-
-.App {
+.app {
   font-family: sans-serif;
   text-align: center;
   display: flex;
@@ -8,10 +7,17 @@
   flex-direction: column;
 }
 
+.solution {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
 .board {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 48px;
 }
 
 .line {
