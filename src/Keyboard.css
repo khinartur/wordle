@@ -7,13 +7,20 @@
 
 .key {
   width: 30px;
-  height: 30px;
+  height: 40px;
   border: 1px solid black;
+  border-radius: 2px;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.special {
+  width: 60px;
 }
 
 .correct {
@@ -22,4 +29,14 @@
 
 .position {
   background-color: gold;
+}
+
+@media (max-width: 768px) {
+  .key {
+    width: 24px;
+  }
+
+  .special {
+    width: 60px;
+  }
 }

@@ -90,7 +90,7 @@ export default function App() {
   return (
     <div className="app">
       <div>
-        <h1>Wordle Game</h1>
+        <h1 className="title">Wordle Game</h1>
       </div>
       {isGameOver && (
         <div className="solution">Solution is: {solution.toUpperCase()}</div>

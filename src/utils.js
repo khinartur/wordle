@@ -8,7 +8,7 @@ export function getSolutionChars(solution, tries) {
       const char = t[i];
       if (solution[i] === char) {
         res[char] = "correct";
-      } else if (solution.includes(char)) {
+      } else if (solution.includes(char) && !res[char]) {
         res[char] = "position";
       }
     }
